@@ -10,7 +10,14 @@
 
 ## 配置
 
-必须配置：
+可以在项目根目录创建 `.env`：
+
+```bash
+WAQI_TOKEN="your-waqi-token"
+BARK_URL="https://api.day.app/your-bark-key"
+```
+
+也可以通过终端环境变量配置：
 
 ```bash
 export WAQI_TOKEN="your-waqi-token"
@@ -45,4 +52,3 @@ life-nudge
 ```bash
 python -m life_nudge --once
 ```
-

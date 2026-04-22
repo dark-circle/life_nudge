@@ -2,12 +2,17 @@ from __future__ import annotations
 
 import argparse
 import logging
+import sys
 import time
+from pathlib import Path
 
-from .config import load_config
-from .monitor import AqiMonitor
-from .notifier import BarkNotifier
-from .waqi import WaqiClient
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from life_nudge.config import load_config
+from life_nudge.monitor import AqiMonitor
+from life_nudge.notifier import BarkNotifier
+from life_nudge.waqi import WaqiClient
 
 
 def main() -> None:
@@ -24,7 +29,6 @@ def main() -> None:
         city=config.city,
         state_file=config.state_file,
     )
-
     while True:
         try:
             result = monitor.check_once()
@@ -42,3 +46,6 @@ def main() -> None:
             break
         time.sleep(config.check_interval_seconds)
 
+
+if __name__ == "__main__":
+    main()
