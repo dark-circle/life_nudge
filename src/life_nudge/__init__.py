@@ -1,0 +1,2 @@
+"""AQI threshold notifier."""
+
