@@ -52,3 +52,18 @@ life-nudge
 ```bash
 python -m life_nudge --once
 ```
+
+## GitHub Actions
+
+项目包含每小时运行一次的 GitHub Actions 配置：
+
+```text
+.github/workflows/aqi-monitor.yml
+```
+
+需要在 GitHub 仓库的 `Settings` -> `Secrets and variables` -> `Actions` 中添加：
+
+- `WAQI_TOKEN`
+- `BARK_URL`
+
+Actions 使用 `.aqi_state.json` 缓存上一次 AQI 值。第一次运行没有历史值，只会保存状态，不会发送变化提醒。
